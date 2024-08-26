@@ -52,9 +52,9 @@
             <?php 
                 wp_nav_menu(
                     array(
-                        "menu" => "primary",
+                        "menu" => "Main Menu",
                         "container" => "",
-                        "theme_location" => "primary"
+                        "theme_location" => "Main Menu"
                     )
                 );
             ?>
