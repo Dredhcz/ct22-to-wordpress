@@ -15,22 +15,22 @@
             </div>
         </section>
         <section class="main-flex">
+        <?php
+get_header();
 
+
+if(have_posts()){
+    the_post();
+};?>
         <section class="article-links">
-            <div class="article-links__article">
-                <a class="article-links__article__link" href="#">
-                    <img class="article-links__article__link--image" alt="Americké síly opouštějí Niger. O základny se zajímají Rusové" loading="lazy" aria-hidden="true" src="https://fs2-ct24.ceskatelevize.cz/image/MDE4NjYyNjE3OGYyOTVhNhaLWxUHdifTXthX-ciqtywQaMiyL1gnr1gCmXYr8hPdekpQ73BLoE1DjhtkqqtKLLLbo1BV5DbExaiw1Hm5xMnjwkkJsAvNF54wdVHOR5crBZO_S5SACJNNUUw1qKZfo7C0zG89IK6hQjouiVJgdROuFKQLqFs22-IxcEvUDf8lJMW4F-wOG0Tsc30cvdpQIQ.jpg?width=228" srcset="
-                                                https://fs2-ct24.ceskatelevize.cz/image/MDE4NjYyNjE3OGYyOTVhNhaLWxUHdifTXthX-ciqtywQaMiyL1gnr1gCmXYr8hPdekpQ73BLoE1DjhtkqqtKLLLbo1BV5DbExaiw1Hm5xMnjwkkJsAvNF54wdVHOR5crBZO_S5SACJNNUUw1qKZfo7C0zG89IK6hQjouiVJgdROuFKQLqFs22-IxcEvUDf8lJMW4F-wOG0Tsc30cvdpQIQ.jpg?width=360 360w,
-                                                https://fs2-ct24.ceskatelevize.cz/image/MDE4NjYyNjE3OGYyOTVhNhaLWxUHdifTXthX-ciqtywQaMiyL1gnr1gCmXYr8hPdekpQ73BLoE1DjhtkqqtKLLLbo1BV5DbExaiw1Hm5xMnjwkkJsAvNF54wdVHOR5crBZO_S5SACJNNUUw1qKZfo7C0zG89IK6hQjouiVJgdROuFKQLqFs22-IxcEvUDf8lJMW4F-wOG0Tsc30cvdpQIQ.jpg?width=480 480w,
-                                                https://fs2-ct24.ceskatelevize.cz/image/MDE4NjYyNjE3OGYyOTVhNhaLWxUHdifTXthX-ciqtywQaMiyL1gnr1gCmXYr8hPdekpQ73BLoE1DjhtkqqtKLLLbo1BV5DbExaiw1Hm5xMnjwkkJsAvNF54wdVHOR5crBZO_S5SACJNNUUw1qKZfo7C0zG89IK6hQjouiVJgdROuFKQLqFs22-IxcEvUDf8lJMW4F-wOG0Tsc30cvdpQIQ.jpg?width=600 600w,
-                                                " sizes="(min-width: 768px) 228px, (min-width: 576px) 144px, 108px" width="228" height="152">
-                    <div class="article-links__article__link__text">
-                        <h3 class="article-links__article__link__text--heading">Americké síly opouštějí Niger. O základny se zajímají Rusové</h3>
-                        <p class="article-links__article__link__text--text">Zdá se, že ani armáda není imunní vůči touze po all-inclusive dovolené. Zatímco se stahují, ruské síly otevírají táborový park s názvem 'Nikdy nevíš, kdy budeš potřebovat dovolenou v poušti!</p>
-                        <span class="article-links__article__link__text--author">ČT24, ket</span>
-                    </div>
-                </a>
-            </div>
+            <article><?php
+if(have_posts()){
+    while(have_posts()){
+    the_post();
+    get_temlate_part('template-parts/content', 'archive');
+    }
+}?>
+</article>
             <div class="article-links__article">
                 <a class="article-links__article__link" href="#">
                     <img class="article-links__article__link--image" alt="Na jihu Španělska se šíří západonilská horečka" loading="lazy" aria-hidden="true" src="https://fs2-ct24.ceskatelevize.cz/image/ZTNkNDIxZDZlYTliMzJkM4biQhoDeP6NFEi13drxtWPcoVxs_UFAxs3cMv0EGNzIOMRJPdb1gSV1RVbW74-i5WY37tZS3VFs38nPjqBnBCzL7-5iVwp5dRd_JYG5GJCWZEJPtNXvxXNF8kMvMhtv4fV4UrRFcZOJZpcHapPVJwOYBk9DEtxBEWAvgQhcfVNbw7YD6BqCzeT6_XX5tJTFyQ.JPG?width=228" srcset="

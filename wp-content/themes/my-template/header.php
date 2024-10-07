@@ -37,45 +37,30 @@
                 </div>
                 
                 <div class="header__nav-menu__tv-menu__list-of-links">
-                    <ul class="header__nav-menu__tv-menu__list-of-links--ul">
-                        <li class="header__nav-menu__tv-menu__list-of-links--ul--element"><a class="header__nav-menu__tv-menu__list-of-links--ul--link" href="#">Počasí</a></li>
-                        <li class="header__nav-menu__tv-menu__list-of-links--ul--element"><a class="header__nav-menu__tv-menu__list-of-links--ul--link" href="#">Teletext</a></li>
-                        <li class="header__nav-menu__tv-menu__list-of-links--ul--element"><a class="header__nav-menu__tv-menu__list-of-links--ul--link" href="#">E-shop</a></li>
-                        <li class="header__nav-menu__tv-menu__list-of-links--ul--element"><a class="header__nav-menu__tv-menu__list-of-links--ul--link" href="#">Vše o ČT</a></li>
-                        <li class="header__nav-menu__tv-menu__list-of-links--ul--element"><a class="header__nav-menu__tv-menu__list-of-links--ul--link" href="#">TV poplatky</a></li>
-                        <li class="header__nav-menu__tv-menu__list-of-links--ul--element"><a class="header__nav-menu__tv-menu__list-of-links--ul--link" href="#">Kontakty</a></li>
-                    </ul>
+                    <?php
+                    wp_nav_menu(
+                        array(
+                            'menu' => 'TV Menu',
+                            'container' => '',
+                            'theme_location' => 'TV Menu',
+                            'items_wrap' => '<ul class="header__nav-menu__tv-menu__list-of-links--ul">%3$s</ul>'
+                        )
+                    )
+                    ?>
                 </div>
             </div>
         </nav>
         <div class="header__rubrics-menu">
-            <?php 
+            <?php
                 wp_nav_menu(
                     array(
-                        "menu" => "Main Menu",
-                        "container" => "",
-                        "theme_location" => "Main Menu"
+                        'menu' => 'Main Menu',
+                        'container' => '',
+                        'theme_location' => 'Main Menu',
+                        'items_wrap' => '<ul class="header__rubrics-menu--ul">%3$s</ul>'
                     )
                 );
             ?>
-            <ul class="header__rubrics-menu--ul">
-                <li class="header__rubrics-menu--element"><a class="header__rubrics-menu--element-link" href="#">Hlavní události</a></li>
-                <li class="header__rubrics-menu--element"><a class="header__rubrics-menu--element-link" href="#">Ukrajina</a></li>
-                <li class="header__rubrics-menu--element"><a class="header__rubrics-menu--element-link" href="#">Americké volby</a></li>
-                <li class="header__rubrics-menu--element"><a class="header__rubrics-menu--element-link" href="#">Domácí</a></li>
-                <li class="header__rubrics-menu--element"><a class="header__rubrics-menu--element-link" href="#">Svět</a></li>
-                <li class="header__rubrics-menu--element"><a class="header__rubrics-menu--element-link" href="#">Regiony</a></li>
-                <li class="header__rubrics-menu--element"><a class="header__rubrics-menu--element-link" href="#">Ekonomika</a></li>
-                <li class="header__rubrics-menu--element"><a class="header__rubrics-menu--element-link" href="#">Kultura</a></li>
-                <li class="header__rubrics-menu--element"><a class="header__rubrics-menu--element-link" href="#">Věda</a></li>
-                <li class="header__rubrics-menu--element"><a class="header__rubrics-menu--element-link" href="#">Počasí</a></li>
-                <li class="header__rubrics-menu--element"><a class="header__rubrics-menu--element-link" href="#">Média</a></li>
-                <li class="header__rubrics-menu--element"><a class="header__rubrics-menu--element-link" href="#">Podcasty</a></li>
-                <li class="header__rubrics-menu--element"><a class="header__rubrics-menu--element-link" href="#">Obrazem</a></li>
-                <li class="header__rubrics-menu--element"><a class="header__rubrics-menu--element-link" href="#">Archiv krátkých zpráv</a></li>
-                <li class="header__rubrics-menu--element"><a class="header__rubrics-menu--element-link" href="#">Komiks</a></li>
-                <li class="header__rubrics-menu--element"><a class="header__rubrics-menu--element-link" href="#">Britské volby</a></li>
-            </ul>
         </div>
         <div class="header__subnav-menu">
             <div class="header__subnav-menu__rubrics">    
@@ -84,32 +69,29 @@
                 <span class="header__subnav-menu__rubrics--span">Rubriky</span>
             </div>
             <div class="header__subnav-menu__rubrics__desktop">
-                <ul class="header__subnav-menu__rubrics__desktop--ul">
-                    <li class="header__rubrics-menu__desktop--element"><a class="header__rubrics-menu__desktop--element-link" href="#">Hlavní události</a></li>
-                    <li class="header__rubrics-menu__desktop--element"><a class="header__rubrics-menu__desktop--element-link" href="#">Ukrajina</a></li>
-                    <li class="header__rubrics-menu__desktop--element"><a class="header__rubrics-menu__desktop--element-link" href="#">Americké volby</a></li>
-                    <li class="header__rubrics-menu__desktop--element"><a class="header__rubrics-menu__desktop--element-link" href="#">Domácí</a></li>
-                    <li class="header__rubrics-menu__desktop--element"><a class="header__rubrics-menu__desktop--element-link" href="#">Svět</a></li>
-                    <li class="header__rubrics-menu__desktop--element"><a class="header__rubrics-menu__desktop--element-link" href="#">Regiony</a></li>
-                    <li class="header__rubrics-menu__desktop--element"><a class="header__rubrics-menu__desktop--element-link" href="#">Ekonomika</a></li>
-                    <li class="header__rubrics-menu__desktop--element"><a class="header__rubrics-menu__desktop--element-link" href="#">Kultura</a></li>
-                    <li class="header__rubrics-menu__desktop--element"><a class="header__rubrics-menu__desktop--element-link" href="#">Věda</a></li>
-                    <li class="header__rubrics-menu__desktop--element"><a class="header__rubrics-menu__desktop--element-link" href="#">Počasí</a></li>
-                    
-                        
-                   <button class="header__subnav-menu__rubrics__desktop--next">Další...</button>
+            <?php
+                wp_nav_menu(
+                    array(
+                        'menu' => 'Desktop Menu',
+                        'container' => '',
+                        'theme_location' => 'Desktop Menu',
+                        'items_wrap' => '<ul class="header__subnav-menu__rubrics__desktop--ul">%3$s</ul>'
+                    )
+                );
+            ?>
+            <?php
+                wp_nav_menu(
+                    array(
+                        'menu' => 'Desktop Submenu',
+                        'container' => '',
+                        'theme_location' => 'Desktop Submenu',
+                        'items_wrap' => '<ul class="header__subnav-menu__rubrics__desktop__menu--ul">%3$s</ul>'
+                    )
+                );
+            ?>
 
-                    
-                </ul>
-                <ul class="header__subnav-menu__rubrics__desktop__menu--ul">
-
-                    <li class="header__rubrics-menu__desktop__menu--element"><a class="header__rubrics-menu__desktop--element-link" href="#">Média</a></li>
-                    <li class="header__rubrics-menu__desktop__menu--element"><a class="header__rubrics-menu__desktop--element-link" href="#">Podcasty</a></li>
-                    <li class="header__rubrics-menu__desktop__menu--element"><a class="header__rubrics-menu__desktop--element-link" href="#">Obrazem</a></li>
-                    <li class="header__rubrics-menu__desktop__menu--element"><a class="header__rubrics-menu__desktop--element-link" href="#">Archiv krátkých zpráv</a></li>
-                    <li class="header__rubrics-menu__desktop__menu--element"><a class="header__rubrics-menu__desktop--element-link" href="#">Komiks</a></li>
-                    <li class="header__rubrics-menu__desktop__menu--element"><a class="header__rubrics-menu__desktop--element-link" href="#">Britské volby</a></li>
-                </ul>
+                
+                
                
                 </div>
 

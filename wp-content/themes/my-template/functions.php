@@ -1,6 +1,6 @@
 <?php
 
-    add_theme_support("title_tag");
+   
 
 function ct_theme_support(){
     add_theme_support("title_tag");
@@ -9,7 +9,7 @@ function ct_theme_support(){
 
 function ct_menus(){
     $locations = array(
-        "primary" => "Desktop Primary Menu",
+        "primary" => "Mobile Rubrics Menu",
         "footer" => "Footer Menu Items"
     );
     register_nav_menus($locations);

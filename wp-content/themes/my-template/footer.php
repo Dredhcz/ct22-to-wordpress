@@ -13,32 +13,17 @@
                     <span class="footer-container__contact--email">info@ceskatelevize.cz</span>
                 </div>
               </div>
+              <?php
+                wp_nav_menu(
+                    array(
+                        'menu' => 'Footer Menu',
+                        'container' => '',
+                        'theme_location' => 'Footer Menu',
+                        'items_wrap' => '<ul class="footer-container__link-list">%3$s</ul>'
+                    )
+                );
+            ?>
             
-            <ul class="footer-container__link-list">
-                <li class="footer-container__link-list--item"><a class="footer-container__link-list--item--link" href="#">Živé vysílání</a></li>
-                <li class="footer-container__link-list--item"><a class="footer-container__link-list--item--link" href="#">Vše o ČT</a></li>
-                <li class="footer-container__link-list--item"><a class="footer-container__link-list--item--link" href="#">TV program</a></li>
-                <li class="footer-container__link-list--item"><a class="footer-container__link-list--item--link" href="#">Studio Brno</a></li>
-                <li class="footer-container__link-list--item"><a class="footer-container__link-list--item--link" href="#">Počasí</a></li>
-                <li class="footer-container__link-list--item"><a class="footer-container__link-list--item--link" href="#">Studio Ostrava</a></li>
-                <li class="footer-container__link-list--item"><a class="footer-container__link-list--item--link" href="#">HbbTV aplikace</a></li>
-                <li class="footer-container__link-list--item"><a class="footer-container__link-list--item--link" href="#">Rada ČT</a></li>
-                <li class="footer-container__link-list--item"><a class="footer-container__link-list--item--link" href="#">Mobilní aplikace</a></li>
-                <li class="footer-container__link-list--item"><a class="footer-container__link-list--item--link" href="#">Reklama</a></li>
-                <li class="footer-container__link-list--item"><a class="footer-container__link-list--item--link" href="#">TV poplatky</a></li>
-                <li class="footer-container__link-list--item"><a class="footer-container__link-list--item--link" href="#">Kariéra</a></li>
-                <li class="footer-container__link-list--item"><a class="footer-container__link-list--item--link" href="#">E-shop</a></li>
-                <li class="footer-container__link-list--item"><a class="footer-container__link-list--item--link" href="#">Konkurzy</a></li>
-                <li class="footer-container__link-list--item"><a class="footer-container__link-list--item--link" href="#">Déčko pro rodiče</a></li>
-                <li class="footer-container__link-list--item"><a class="footer-container__link-list--item--link" href="#">Pro média</a></li>
-                <li class="footer-container__link-list--item"><a class="footer-container__link-list--item--link" href="#">Teletext</a></li>
-                <li class="footer-container__link-list--item"><a class="footer-container__link-list--item--link" href="#">Pro autory</a></li>
-                <li class="footer-container__link-list--item"><a class="footer-container__link-list--item--link" href="#">Časté dotazy</a></li>
-                <li class="footer-container__link-list--item"><a class="footer-container__link-list--item--link" href="#">Telexport</a></li>
-                <li class="footer-container__link-list--item"><a class="footer-container__link-list--item--link" href="#">Zveme Vás do kina</a></li>
-                <li class="footer-container__link-list--item"><a class="footer-container__link-list--item--link" href="#">Produkční služby</a></li>
-                <li class="footer-container__link-list--item"><a class="footer-container__link-list--item--link" href="#">Kontakty</a></li>
-            </ul>
             <div class="footer-container__social-sites">
                 <span class="footer-container__social-sites--follow-us">Česká televize na sociálních sítích:</span>
                 <a class="footer-container__social-sites--link" href="#">

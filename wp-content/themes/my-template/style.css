@@ -146,7 +146,7 @@ button{
     padding: 8px 0;
     list-style-type: none;
 }
-.header__nav-menu__tv-menu__list-of-links--ul--link{
+.header__nav-menu__tv-menu__list-of-links--ul a{
     text-decoration: none;
     color: #041E42;
     font-size: 1rem;
@@ -239,7 +239,7 @@ button{
     padding: 9px 26px;
     
 }
-.header__rubrics-menu--element-link{
+.header__rubrics-menu--element a{
     color: #041E42;
     text-decoration: none;
 }
@@ -253,7 +253,7 @@ button{
     display: inline-block;
     
 }
-.header__rubrics-menu__desktop--element-link{
+.header__rubrics-menu__desktop--element a{
     color: #041e42;
     height: 57px;
     margin: 0;
@@ -272,7 +272,7 @@ button{
     color: #041e42;
     height: 57px;
     margin: 0;
-    padding: 0 14px;
+    padding: 0 10px;
     position: relative;
     font-size: 16px;
     text-decoration: none;
@@ -312,15 +312,30 @@ button{
     list-style-type: none;
     background-color: white;
     top: 57px;
-    right: 100px;
+    right: 85px;
 }
 .header__subnav-menu__rubrics__desktop--next{
     display: inline-block;
+    list-style: none;
+
+}
+.header__subnav-menu__rubrics__desktop--next a{
+    text-decoration: none;
+    color: #041E42;
+    font-size: 1rem;
+    font-weight: 500;
 }
 .header__rubrics-menu__desktop__menu--element{
     display: block;
+    padding: 9px 26px;
 }
-
+.header__rubrics-menu__desktop__menu--element a{
+    text-decoration: none;
+    color: #041E42;
+    font-size: 1rem;
+    font-weight: 500;
+    
+}
 
 .main-banner{
     display: flex;
@@ -615,7 +630,7 @@ button{
     line-height: 22px;
     
 }
-.footer-container__link-list--item--link{
+.footer-container__link-list--item a{
     color: #041E42;
     text-decoration: none;
 }
