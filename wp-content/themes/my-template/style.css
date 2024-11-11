@@ -44,6 +44,9 @@ button{
     padding: 10px;
     display: none;
 }
+.header__nav-menu--input::placeholder{
+    color: #fff;
+}
 .header__nav-menu--logo{
     display: block;
     width: 100px;
@@ -347,14 +350,14 @@ button{
     max-width: 1248px;
 }
 .main-banner--image{
-    display: none;
-    height: auto;
-    width: 100%;
+    display: none!important;
+    height: auto!important;
+    width: 100%!important;
 }
 .main-banner--image-mobile{
-    display: block;
-    max-width: 100%;
-    height: auto;
+    display: block!important;
+    max-width: 100%!important;
+    height: auto!important;
 }
 .main-banner__title{
     position: absolute;
@@ -487,15 +490,15 @@ button{
     
 }
 .carousel__wrapper__container{
-    padding: 0 110px 50px 100px;
-    
+    padding: 0 0 50px 0;
+    max-width: 1248px;
     margin: 0 auto;
 }
 .carousel__wrapper__container__videos{
     display: flex;
     overflow: hidden;
     position: relative;
-    max-width: 1242px;
+    
 }
 .carousel__wrapper__container__videos__article{
     display: inline;
@@ -540,6 +543,7 @@ button{
     border: none;
     background: none;
     cursor: pointer;
+    width: 360px;
 }
 .carousel__wrapper__container__videos__article__button--heading{
     text-align: left;

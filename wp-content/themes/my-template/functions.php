@@ -29,5 +29,7 @@ function ct_registrer_scripts(){
     }
     add_action("wp_enqueue_scripts", "ct_registrer_scripts");
 
+    add_theme_support( 'post-thumbnails' );
 
+    
 ?>

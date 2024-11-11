@@ -5,6 +5,9 @@
     .carousel__wrapper__container__videos__article__button--image{
         width: 242px;
     }
+    .carousel__wrapper__container__videos__article__button{
+        width: 242px;
+    }
     .carousel__wrapper__container__videos--button-left{
         transform: translatex(250%);
     }
@@ -107,8 +110,6 @@
     }
     .header__nav-menu--input{
         display: block;
-    }
-    .footer-container__contact{
     }
     .footer{
         background-color: rgb(244, 244, 244);
@@ -283,5 +284,11 @@
     }
     .footer-container__social-sites--follow-us{
         display: block;
+    }
+}
+@media only screen and (max-width: 1300px){
+    .carousel__wrapper__container{
+        margin-left: 20px;
+        margin-right: 20px;
     }
 }

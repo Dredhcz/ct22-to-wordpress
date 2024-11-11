@@ -1,93 +1,82 @@
-<?php get_header();?>
+<?php get_header(); ?>
+<main class="main">
 <?php
-    if(have_posts()){
-        while(have_posts()){
-            the_post();
-            the_content();
-        }
-    }
-?>
-    <main class="main">
-        <section class="main-banner">
-            <button><img class="main-banner--image" src="images/ct24-banner-desktop.webp" alt="Policie obvinila karlovarského radního Bursíka z ODS"><img class="main-banner--image-mobile" src="images/ct24-banner-mobile.webp" alt="Policie obvinila karlovarského radního Bursíka z ODS"></button>
+// Vlastní dotaz pro získání jednoho příspěvku pro hlavní banner
+$main_banner_args = array(
+    'post_type'      => 'post',
+    'posts_per_page' => 1,
+    'orderby'        => 'date',
+    'tag'            => 'main-title',
+    'order'          => 'DESC'
+);
+
+$main_banner_query = new WP_Query($main_banner_args);
+
+if ($main_banner_query->have_posts()) : ?>
+    <section class="main-banner">
+        <?php while ($main_banner_query->have_posts()) : $main_banner_query->the_post(); ?>
+            <?php if (has_post_thumbnail()) : ?>
+                <button>
+                    <?php the_post_thumbnail("large", array('class' => 'main-banner--image')); ?>
+                    <?php the_post_thumbnail("large", array('class' => 'main-banner--image-mobile')); ?>
+                </button>
+            <?php endif; ?>
             <div class="main-banner__title">
-                <h3 class="main-banner__title--heading">Policie obvinila karlovarského radního Brunclíka z ODS</h3>
+                <h3 class="main-banner__title--heading"><?php the_title(); ?></h3>
             </div>
-        </section>
-        <section class="main-flex">
-        <?php
-get_header();
+        <?php endwhile; ?>
+    </section>
+<?php else : ?>
+    <p>Žádné příspěvky k zobrazení</p>
+<?php endif;
+wp_reset_postdata();
+?>
+<section class="main-flex">
+<?php
+// Vlastní dotaz pro získání pěti příspěvků pro články
+$article_links_args = array(
+    'post_type'      => 'post',
+    'posts_per_page' => 5,
+    'orderby'        => 'date',
+    'order'          => 'ASC'
+);
+
+$article_links_query = new WP_Query($article_links_args);
+
+if ($article_links_query->have_posts()) : ?>
+    <section class="article-links">
+        <?php while ($article_links_query->have_posts()) : $article_links_query->the_post(); ?>
+            <div class="article-links__article">
+                <a class="article-links__article__link" href="<?php the_permalink(); ?>">
+                    <?php if (has_post_thumbnail()) : ?>
+                        <?php the_post_thumbnail('medium', array('class' => 'article-links__article__link--image')); ?>
+                        
+                    <?php endif; ?>
+                    <div class="article-links__article__link__text">
+                        <h3 class="article-links__article__link__text--heading"><?php the_title(); ?></h3>
+                        <div class="article-links__article__link__text--text">
+                            <?php the_excerpt(); ?>
+                        </div>
+                        <span class="article-links__article__link__text--author">
+                            <?php the_author(); ?>
+                        </span>
+                    </div>
+                </a>
+            </div>
+        <?php endwhile; ?>
+    </section>
+
+    <!-- Stránkování -->
+    
+
+<?php else : ?>
+    <p>Žádné příspěvky k zobrazení</p>
+<?php endif;
+wp_reset_postdata();
+?>
 
 
-if(have_posts()){
-    the_post();
-};?>
-        <section class="article-links">
-            <article><?php
-if(have_posts()){
-    while(have_posts()){
-    the_post();
-    get_temlate_part('template-parts/content', 'archive');
-    }
-}?>
-</article>
-            <div class="article-links__article">
-                <a class="article-links__article__link" href="#">
-                    <img class="article-links__article__link--image" alt="Na jihu Španělska se šíří západonilská horečka" loading="lazy" aria-hidden="true" src="https://fs2-ct24.ceskatelevize.cz/image/ZTNkNDIxZDZlYTliMzJkM4biQhoDeP6NFEi13drxtWPcoVxs_UFAxs3cMv0EGNzIOMRJPdb1gSV1RVbW74-i5WY37tZS3VFs38nPjqBnBCzL7-5iVwp5dRd_JYG5GJCWZEJPtNXvxXNF8kMvMhtv4fV4UrRFcZOJZpcHapPVJwOYBk9DEtxBEWAvgQhcfVNbw7YD6BqCzeT6_XX5tJTFyQ.JPG?width=228" srcset="
-                                                https://fs2-ct24.ceskatelevize.cz/image/ZTNkNDIxZDZlYTliMzJkM4biQhoDeP6NFEi13drxtWPcoVxs_UFAxs3cMv0EGNzIOMRJPdb1gSV1RVbW74-i5WY37tZS3VFs38nPjqBnBCzL7-5iVwp5dRd_JYG5GJCWZEJPtNXvxXNF8kMvMhtv4fV4UrRFcZOJZpcHapPVJwOYBk9DEtxBEWAvgQhcfVNbw7YD6BqCzeT6_XX5tJTFyQ.JPG?width=360 360w,
-                                                https://fs2-ct24.ceskatelevize.cz/image/ZTNkNDIxZDZlYTliMzJkM4biQhoDeP6NFEi13drxtWPcoVxs_UFAxs3cMv0EGNzIOMRJPdb1gSV1RVbW74-i5WY37tZS3VFs38nPjqBnBCzL7-5iVwp5dRd_JYG5GJCWZEJPtNXvxXNF8kMvMhtv4fV4UrRFcZOJZpcHapPVJwOYBk9DEtxBEWAvgQhcfVNbw7YD6BqCzeT6_XX5tJTFyQ.JPG?width=480 480w,
-                                                https://fs2-ct24.ceskatelevize.cz/image/ZTNkNDIxZDZlYTliMzJkM4biQhoDeP6NFEi13drxtWPcoVxs_UFAxs3cMv0EGNzIOMRJPdb1gSV1RVbW74-i5WY37tZS3VFs38nPjqBnBCzL7-5iVwp5dRd_JYG5GJCWZEJPtNXvxXNF8kMvMhtv4fV4UrRFcZOJZpcHapPVJwOYBk9DEtxBEWAvgQhcfVNbw7YD6BqCzeT6_XX5tJTFyQ.JPG?width=600 600w,
-                                                " sizes="(min-width: 768px) 228px, (min-width: 576px) 144px, 108px" width="228" height="152">
-                    <div class="article-links__article__link__text">
-                        <h3 class="article-links__article__link__text--heading">Na jihu Španělska se šíří západonilská horečka</h3>
-                        <p class="article-links__article__link__text--text">Komáři se rozhodli pro vlastní letní festival. Vstupné je zdarma, ale po odchodu si odnesete jako suvenýr speciální bodnutí a vzpomínku na unikátní exotickou horečku</p>
-                        <span class="article-links__article__link__text--author">ČTK, kar</span>
-                    </div>
-                </a>
-            </div>
-            <div class="article-links__article">
-                <a class="article-links__article__link" href="#">
-                    <img class="article-links__article__link--image" alt="Turistů z ciziny ve druhém kvartálu přibylo, zůstávali déle" loading="lazy" aria-hidden="true" src="https://fs2-ct24.ceskatelevize.cz/image/YWI5Y2VhNjViYzE2OTQzMgG0lKt1_pwtHWb1u_2-qoJcSHdLHMOWV32fjU6I0A1I382RGm8FAKv1NhpesbE4N2QMKDI1PWbjCi07r-vUgrby4N1Wi_yMBnJH7Dmy-zffviAtKTlYTilC6wkj50DLTLw0Ypp7FVTB8tPwGifIal8I9ca6JzOXymR5v7zKIEZwm3404s3d0Xh0Nn1o7NAmRw.JPG?width=228" srcset="
-                    https://fs2-ct24.ceskatelevize.cz/image/YWI5Y2VhNjViYzE2OTQzMgG0lKt1_pwtHWb1u_2-qoJcSHdLHMOWV32fjU6I0A1I382RGm8FAKv1NhpesbE4N2QMKDI1PWbjCi07r-vUgrby4N1Wi_yMBnJH7Dmy-zffviAtKTlYTilC6wkj50DLTLw0Ypp7FVTB8tPwGifIal8I9ca6JzOXymR5v7zKIEZwm3404s3d0Xh0Nn1o7NAmRw.JPG?width=360 360w,
-                    https://fs2-ct24.ceskatelevize.cz/image/YWI5Y2VhNjViYzE2OTQzMgG0lKt1_pwtHWb1u_2-qoJcSHdLHMOWV32fjU6I0A1I382RGm8FAKv1NhpesbE4N2QMKDI1PWbjCi07r-vUgrby4N1Wi_yMBnJH7Dmy-zffviAtKTlYTilC6wkj50DLTLw0Ypp7FVTB8tPwGifIal8I9ca6JzOXymR5v7zKIEZwm3404s3d0Xh0Nn1o7NAmRw.JPG?width=480 480w,
-                    https://fs2-ct24.ceskatelevize.cz/image/YWI5Y2VhNjViYzE2OTQzMgG0lKt1_pwtHWb1u_2-qoJcSHdLHMOWV32fjU6I0A1I382RGm8FAKv1NhpesbE4N2QMKDI1PWbjCi07r-vUgrby4N1Wi_yMBnJH7Dmy-zffviAtKTlYTilC6wkj50DLTLw0Ypp7FVTB8tPwGifIal8I9ca6JzOXymR5v7zKIEZwm3404s3d0Xh0Nn1o7NAmRw.JPG?width=600 600w,
-                    " sizes="(min-width: 768px) 228px, (min-width: 576px) 144px, 108px" width="228" height="152">
-                    <div class="article-links__article__link__text">
-                        <h3 class="article-links__article__link__text--heading">Turistů z ciziny ve druhém kvartálu přibylo, zůstávali déle</h3>
-                        <p class="article-links__article__link__text--text">Praha hlásí rekordní počet návštěvníků! Přemýšlíme, zda je to kvůli krásám historického centra nebo proto, že každý hledá ten nejlepší úhel pro svou 473. selfie u Karlova mostu.</p>
-                        <span class="article-links__article__link__text--author">ČTK, den</span>
-                    </div>
-                </a>
-            </div>
-            <div class="article-links__article">
-                <a class="article-links__article__link" href="#">
-                    <img class="article-links__article__link--image" alt="Soud zrušil Počeradům výjimku na vypouštění rtuti" loading="lazy" aria-hidden="true" src="https://fs2-ct24.ceskatelevize.cz/image/YTZjNGVmOTk4ZjdkNjAzMWD0xvKrGN-iEkM5p9j0wWcZM0TrU_2iQxzTmGDuRc2o4tKm7lpuQCnGu-lFVHvEdRnlQSkUf9pVYjmRLVUS8GOTkhIKhDhGVGyE8sT0JdIfDDMOfKT46-bM19HJotJnJfNMEQ4QTWeGF48gytUJkGo0sDSSbsMnjjpS5XGRXcRnvQqWTFLHL0NFAQ6x3EAPjA.jpg?width=228" srcset="
-                                                https://fs2-ct24.ceskatelevize.cz/image/YTZjNGVmOTk4ZjdkNjAzMWD0xvKrGN-iEkM5p9j0wWcZM0TrU_2iQxzTmGDuRc2o4tKm7lpuQCnGu-lFVHvEdRnlQSkUf9pVYjmRLVUS8GOTkhIKhDhGVGyE8sT0JdIfDDMOfKT46-bM19HJotJnJfNMEQ4QTWeGF48gytUJkGo0sDSSbsMnjjpS5XGRXcRnvQqWTFLHL0NFAQ6x3EAPjA.jpg?width=360 360w,
-                                                https://fs2-ct24.ceskatelevize.cz/image/YTZjNGVmOTk4ZjdkNjAzMWD0xvKrGN-iEkM5p9j0wWcZM0TrU_2iQxzTmGDuRc2o4tKm7lpuQCnGu-lFVHvEdRnlQSkUf9pVYjmRLVUS8GOTkhIKhDhGVGyE8sT0JdIfDDMOfKT46-bM19HJotJnJfNMEQ4QTWeGF48gytUJkGo0sDSSbsMnjjpS5XGRXcRnvQqWTFLHL0NFAQ6x3EAPjA.jpg?width=480 480w,
-                                                https://fs2-ct24.ceskatelevize.cz/image/YTZjNGVmOTk4ZjdkNjAzMWD0xvKrGN-iEkM5p9j0wWcZM0TrU_2iQxzTmGDuRc2o4tKm7lpuQCnGu-lFVHvEdRnlQSkUf9pVYjmRLVUS8GOTkhIKhDhGVGyE8sT0JdIfDDMOfKT46-bM19HJotJnJfNMEQ4QTWeGF48gytUJkGo0sDSSbsMnjjpS5XGRXcRnvQqWTFLHL0NFAQ6x3EAPjA.jpg?width=600 600w,
-                                                " sizes="(min-width: 768px) 228px, (min-width: 576px) 144px, 108px" width="228" height="152">
-                    <div class="article-links__article__link__text">
-                        <h3 class="article-links__article__link__text--heading">Soud zrušil Počeradům výjimku na vypouštění rtuti</h3>
-                        <p class="article-links__article__link__text--text">Průmyslové odvětví ztrácí svůj prémiový kanál: 'Noc v chemické továrně'. Zdá se, že čistší vzduch je teď populárnější než kdy jindy!</p>
-                        <span class="article-links__article__link__text--author">ČTK, mvr</span>
-                    </div>
-                </a>
-            </div>
-            <div class="article-links__article">
-                <a class="article-links__article__link" href="#">
-                    <img class="article-links__article__link--image" alt="Automobilka BMW začala využívat humanoida" loading="lazy" aria-hidden="true" src="https://fs2-ct24.ceskatelevize.cz/image/NDk4NDI3ODMzM2E5YzhhYZbVplVYet2_fLrrZL0IGjfCdTpALSsSivwhOhNynkZo_m9ORDPTb4PVPhIkVcUjogNVngHPl2UYL3HDxCmjh_uReh-6-NtKyjQY82D1Kw_JG3xv5c0mfLZcQCsygwAJ9B8Y4TWwOrqwKjjxpABIsVJI4rGAgO1w7BmUn95lPRxj_SB0DCL4IBq2IB5swW6byw.jpg?width=228" srcset="
-                                                https://fs2-ct24.ceskatelevize.cz/image/NDk4NDI3ODMzM2E5YzhhYZbVplVYet2_fLrrZL0IGjfCdTpALSsSivwhOhNynkZo_m9ORDPTb4PVPhIkVcUjogNVngHPl2UYL3HDxCmjh_uReh-6-NtKyjQY82D1Kw_JG3xv5c0mfLZcQCsygwAJ9B8Y4TWwOrqwKjjxpABIsVJI4rGAgO1w7BmUn95lPRxj_SB0DCL4IBq2IB5swW6byw.jpg?width=360 360w,
-                                                https://fs2-ct24.ceskatelevize.cz/image/NDk4NDI3ODMzM2E5YzhhYZbVplVYet2_fLrrZL0IGjfCdTpALSsSivwhOhNynkZo_m9ORDPTb4PVPhIkVcUjogNVngHPl2UYL3HDxCmjh_uReh-6-NtKyjQY82D1Kw_JG3xv5c0mfLZcQCsygwAJ9B8Y4TWwOrqwKjjxpABIsVJI4rGAgO1w7BmUn95lPRxj_SB0DCL4IBq2IB5swW6byw.jpg?width=480 480w,
-                                                https://fs2-ct24.ceskatelevize.cz/image/NDk4NDI3ODMzM2E5YzhhYZbVplVYet2_fLrrZL0IGjfCdTpALSsSivwhOhNynkZo_m9ORDPTb4PVPhIkVcUjogNVngHPl2UYL3HDxCmjh_uReh-6-NtKyjQY82D1Kw_JG3xv5c0mfLZcQCsygwAJ9B8Y4TWwOrqwKjjxpABIsVJI4rGAgO1w7BmUn95lPRxj_SB0DCL4IBq2IB5swW6byw.jpg?width=600 600w,
-                                                " sizes="(min-width: 768px) 228px, (min-width: 576px) 144px, 108px" width="228" height="152">
-                    <div class="article-links__article__link__text">
-                        <h3 class="article-links__article__link__text--heading">Automobilka BMW začala využívat humanoida</h3>
-                        <p class="article-links__article__link__text--text">Vítejte v budoucnosti, kde roboti nejen že řídí auta, ale taky zvládají vaši ranní kávu! Jen nezapomeňte nastavit preferovanou sílu espresso před jízdou.</p>
-                        <span class="article-links__article__link__text--author">Tomáš Karlík</span>
-                    </div>
-                </a>
-            </div>
-        </section>
+            
         <section class="main__video-and-articles">
              <section class="video">
             <iframe class="video--video" width="560" height="315" src="https://www.youtube.com/embed/HKcGcu1elCY?si=3cCvF9vdQRAfzyU5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -118,6 +107,12 @@ if(have_posts()){
        
         </section>
         
+
+
+        
+
+
+
         <section class="carousel">
             <div class="carousel__wrapper">
                 <div class="carousel__wrapper__container">
@@ -129,61 +124,38 @@ if(have_posts()){
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="32" fill="none" viewBox="0 0 16 9"><path fill="currentColor" fill-rule="evenodd" d="M.293.293A1 1 0 0 1 1.613.21l.094.083L8 6.585 14.293.293a1 1 0 0 1 1.32-.083l.094.083a1 1 0 0 1 .083 1.32l-.083.094-7 7a1 1 0 0 1-1.32.083l-.094-.083-7-7a1 1 0 0 1 0-1.414Z" clip-rule="evenodd"></path></svg>
                         </button>
                     <div class="carousel__wrapper__container__videos">
+                    <?php
+// Vlastní dotaz pro získání pěti příspěvků pro články
+$article_links_args = array(
+    'post_type'      => 'post',
+    'posts_per_page' => 27,
+    'orderby'        => 'date',
+    'tag'            => 'carousel',
+    'order'          => 'ASC'
+);
+
+$article_links_query = new WP_Query($article_links_args);
+
+if ($article_links_query->have_posts()) : ?>
+    
+        <?php while ($article_links_query->have_posts()) : $article_links_query->the_post(); ?>
+        <div class="carousel__wrapper__container__videos__article">
+            <button class="carousel__wrapper__container__videos__article__button">
+                <?php if (has_post_thumbnail()) : ?>
+                    <?php the_post_thumbnail("medium", array('class' => 'carousel__wrapper__container__videos__article__button--image')); ?>
+                <?php endif; ?>
+                <h3 class="carousel__wrapper__container__videos__article__button--heading"><?php the_title(); ?></h3>
+            </button>
+           </div>
+        <?php endwhile; ?>
+    
+<?php else : ?>
+    <p>Žádné příspěvky k zobrazení</p>
+<?php endif;
+wp_reset_postdata();
+?>
                         
-                        <div class="carousel__wrapper__container__videos__article">
-                            <button class="carousel__wrapper__container__videos__article__button">
-                                <img class="carousel__wrapper__container__videos__article__button--image" src="images/image1.png" alt="">
-                                <h3 class="carousel__wrapper__container__videos__article__button--heading">Tanky jedou do Prahy!! Hihihi</h3>
-                            </button>
-                        </div>
-                        <div class="carousel__wrapper__container__videos__article">
-                            <button class="carousel__wrapper__container__videos__article__button">
-                                <img class="carousel__wrapper__container__videos__article__button--image" src="images/image2.webp" alt="">
-                                <h3 class="carousel__wrapper__container__videos__article__button--heading">Kamera zachytila psy, jak zapálili kus gauče a všichni se z toho můžeme posrat</h3>
-                            </button>
-                        </div>
-                        <div class="carousel__wrapper__container__videos__article">
-                            <button class="carousel__wrapper__container__videos__article__button">
-                                <img class="carousel__wrapper__container__videos__article__button--image" src="images/image3.webp" alt="">
-                                <h3 class="carousel__wrapper__container__videos__article__button--heading">Začínají padat skály na Písecku, horolezci padají s nimi</h3>
-                            </button>
-                        </div>
-                        <div class="carousel__wrapper__container__videos__article">
-                            <button class="carousel__wrapper__container__videos__article__button">
-                                <img class="carousel__wrapper__container__videos__article__button--image" src="images/image3.webp" alt="">
-                                <h3 class="carousel__wrapper__container__videos__article__button--heading">huheheheh</h3>
-                            </button>
-                        </div>
-                        <div class="carousel__wrapper__container__videos__article">
-                            <button class="carousel__wrapper__container__videos__article__button">
-                                <img class="carousel__wrapper__container__videos__article__button--image" src="images/image3.webp" alt="">
-                                <h3 class="carousel__wrapper__container__videos__article__button--heading">huheheheh</h3>
-                            </button>
-                        </div>
-                        <div class="carousel__wrapper__container__videos__article">
-                            <button class="carousel__wrapper__container__videos__article__button">
-                                <img class="carousel__wrapper__container__videos__article__button--image" src="images/image3.webp" alt="">
-                                <h3 class="carousel__wrapper__container__videos__article__button--heading">huheheheh</h3>
-                            </button>
-                        </div>
-                        <div class="carousel__wrapper__container__videos__article">
-                            <button class="carousel__wrapper__container__videos__article__button">
-                                <img class="carousel__wrapper__container__videos__article__button--image" src="images/image3.webp" alt="">
-                                <h3 class="carousel__wrapper__container__videos__article__button--heading">huheheheh</h3>
-                            </button>
-                        </div>
-                        <div class="carousel__wrapper__container__videos__article">
-                            <button class="carousel__wrapper__container__videos__article__button">
-                                <img class="carousel__wrapper__container__videos__article__button--image" src="images/image3.webp" alt="">
-                                <h3 class="carousel__wrapper__container__videos__article__button--heading">huheheheh</h3>
-                            </button>
-                        </div>
-                        <div class="carousel__wrapper__container__videos__article">
-                            <button class="carousel__wrapper__container__videos__article__button">
-                                <img class="carousel__wrapper__container__videos__article__button--image" src="images/image3.webp" alt="">
-                                <h3 class="carousel__wrapper__container__videos__article__button--heading">huheheheh</h3>
-                            </button>
-                        </div>
+                        
 
                         
                     </div>
